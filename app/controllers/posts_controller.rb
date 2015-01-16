@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
     def index
         @posts = Post.all
+        @votes = Vote.all
     end
 
     def show
@@ -36,6 +37,13 @@ class PostsController < ApplicationController
       @post = Post.find_by_id(params[:id])
       @comment = Comment.new
     end
+
+
+    def create_vote
+      User.find_by_id(@current_user['id']).votes << Post.find_by_id(params[:id]).votes.create
+      redirect_to(:back)
+    end
+
 
   private
 

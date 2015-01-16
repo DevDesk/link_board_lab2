@@ -1,6 +1,7 @@
 <h3>Latest posts</h3>
 <table class="table">
 <tr>
+    <th>Upvote</th>
     <th>Score</th>
     <th>Title</th>
     <th>User</th>
@@ -10,11 +11,12 @@
 <% if @posts.any? %>
     <% @posts.each do |post| %>
         <tr>
-            <td>0</td>
+            <td><%= button_to "&#8682".html_safe, post_create_vote_path(post), :class => "btn btn-default btn-xs" %> </td>
+            <td><%= post.votes.length %>      </td>
             <td><%= link_to post.title,post.link, :target=>'_blank' %></td>
             <td><%= post.user ? post.user.name : 'Unknown' %></td>
             <td><%= format_creation_time post %> </td>
-            <td>0</td>
+            <td><%= link_to "Comment", post_comments_path(post), :class => "btn btn-warning btn-sm"%></td>
         </tr>
     <% end %>
 <% else %>

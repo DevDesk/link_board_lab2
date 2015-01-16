@@ -1,14 +1,13 @@
-<li class = "comment">
-    <div>
-           <%= comment.user ? comment.user.name : "Unknown" %> <small><%= format_creation_time comment %></small>
-    </div>
-    <div>
-        <%= comment.body %>
-    </div>
-
+<div class="btn-group test">
+    <ul class = "list-inline col-md-12">
+        <li> <%=button_to "&#8682".html_safe, comment_create_vote_path(comment), :class => "btn btn-default btn-xs"%></li>
+        <li> <%=comment.votes.count%> </li>
+        <li> <%= comment.user ? comment.user.name : "Unknown" %> <small><%= format_creation_time comment %></small> </li>
+        <li> <%= comment.body %> </li>
+        <li>
     <% unless comment.comments.empty? %>
-    <ul class = "comment_list">
-        <%= render :partial => 'comment', :collection => comment.comments %>
-    </ul>
+            <%= render :partial => 'comment', :collection => comment.comments %>
     <% end %>
-</li>
+        </li>
+    </ul>
+</div>

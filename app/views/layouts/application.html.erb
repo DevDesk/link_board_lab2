@@ -29,7 +29,7 @@
               <li><%= link_to "About", about_path %></li>
               <% if @current_user %>
                 <li><%= link_to "Create Post", new_post_path %></li>
-              <% end %>              
+              <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <% if @current_user %>
@@ -42,13 +42,14 @@
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
-      </nav>    
+      </nav>
         <% if flash.any? %>
           <% flash.each do |key,val| %>
             <div class="alert alert-<%= key %>"><%= val %></div>
           <% end %>
         <% end %>
-
+    </div>
+    <div class="container">
         <%= yield %>
     </div>
 
