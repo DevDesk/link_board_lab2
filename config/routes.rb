@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
 
   resources :posts
+  get "posts/:id/comments" => "posts#comments", as: :posts_comments
+  post "posts/:id/comments" => "posts#create_comment"
+
+  resources :comments
 
   # get 'users/new'
 

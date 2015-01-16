@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
-    end     
+    end
 
     def create
       return unless is_authenticated?
@@ -24,13 +24,18 @@ class PostsController < ApplicationController
     end
 
     def edit
-    end   
+    end
 
     def update
     end
 
     def destroy
-    end    
+    end
+
+    def comments
+      @post = Post.find_by_id(params[:id])
+      @comment = Comment.new
+    end
 
   private
 

@@ -1,0 +1,14 @@
+<li class = "comment">
+    <div>
+           <%= comment.user ? comment.user.name : "Unknown" %> <small><%= format_creation_time comment %></small>
+    </div>
+    <div>
+        <%= comment.body %>
+    </div>
+
+    <% unless comment.comments.empty? %>
+    <ul class = "comment_list">
+        <%= render :partial => 'comment', :collection => comment.comments %>
+    </ul>
+    <% end %>
+</li>
