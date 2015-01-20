@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   post "posts/:id/comments" => "posts#create_comment"
 
   resources :comments
-
   post "comments/:id/votes" => "comments#create_vote", as: :comment_create_vote
   post "posts/:id/votes" => "posts#create_vote", as: :post_create_vote
 

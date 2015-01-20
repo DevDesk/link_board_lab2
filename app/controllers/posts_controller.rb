@@ -3,6 +3,14 @@ class PostsController < ApplicationController
     def index
         @posts = Post.all
         @votes = Vote.all
+
+        respond_to do |format|
+          format.json {render json: @posts}
+          format.xml {render xml: @posts}
+          format.html
+        end
+
+        # render json: @posts
     end
 
     def show
@@ -22,6 +30,7 @@ class PostsController < ApplicationController
         flash[:success] = 'Post added'
         redirect_to posts_path
       end
+
     end
 
     def edit
@@ -42,6 +51,13 @@ class PostsController < ApplicationController
     def create_vote
       User.find_by_id(@current_user['id']).votes << Post.find_by_id(params[:id]).votes.create
       redirect_to(:back)
+
+                  #ajax  this needs fixing...
+      # respond_to do |format|
+      #   format.json { render json: {result: !existing_vote,votes:post.votes.length} }
+      #   format.html {redirect_to post_posts_path}
+      # end
+
     end
 
 
